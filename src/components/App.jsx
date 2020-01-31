@@ -1,8 +1,10 @@
 import React from 'react';
 
+import Search from './Search.jsx';
+
 const App = () => (
     <div>
-        hello world 
+        <Search />
     </div>
 );
 
