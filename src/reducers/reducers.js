@@ -1,6 +1,6 @@
 const initialState = {
     data: []
-}
+};
 
 function fetchDataReducer(state = initialState, action) {
     switch (action.type){
@@ -11,6 +11,6 @@ function fetchDataReducer(state = initialState, action) {
         default: 
             return state
     }
-}
+};
 
 export default fetchDataReducer
