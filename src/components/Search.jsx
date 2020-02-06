@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { fetchData } from '../actions/actions.js';
 
@@ -18,9 +19,9 @@ class Search extends React.Component {
             navigator.geolocation.getCurrentPosition(function(position){
               const lat = position.coords.latitude;
               const lon = position.coords.longitude;
-              dispatch(fetchData(lat, lon))
+              dispatch(fetchData(lat, lon));
             })
-          } 
+          };
     };
 
     render(){
@@ -29,14 +30,11 @@ class Search extends React.Component {
                 <form>
                     <label>Find Restaurant's near me</label>
                     <button type='submit' onClick={this.handleApiSearch}>Search</button>
+                    {/* <Link to='/'  onClick={this.handleApiSearch}>Search</Link> */}
                 </form>
             </div>
         )
     }
 };
 
-const mapStateToProps = state => ({
-    data: state.data
-});
-
-export default connect(mapStateToProps)(Search);
+export default connect(null)(Search);

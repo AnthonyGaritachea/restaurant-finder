@@ -7,3 +7,10 @@ export const fetchData = (lat, lon) => {
         payload: axios.get(`/data/${lat}/${lon}`)
     }
 };
+
+export const fetchDataById = id => {
+    return {
+        type: 'FETCH_RESTAURANT_DATA_BY_ID',
+        payload: axios.get(`/data/${id}`)
+    }
+};
