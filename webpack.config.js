@@ -5,7 +5,7 @@ module.exports = {
     mode: 'development',
     output: {
         filename: 'bundle.js',
-        path: path.join(__dirname, 'public')
+        path: path.join(__dirname, '/dist')
     },
     module: {
         rules: [
@@ -13,6 +13,14 @@ module.exports = {
                 loader: 'babel-loader',
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/
+            },
+            {
+                loader: ['style-loader', 'css-loader'],
+                test: /\.css$/
+            },
+            {
+                loader: 'file-loader',
+                test: /\.jpeg$/
             }
         ]
     },

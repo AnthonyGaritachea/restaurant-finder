@@ -9,14 +9,12 @@ class DisplayResults extends React.Component {
 
     render(){
         const { data } = this.props;
-        console.log('data:',data);
         return(
             <div>
                 {data.map((restaurant) => {
                     return (
-                        <ul>
-                            <li key={restaurant.id}></li>
-                            <li><img src={restaurant.image_url} style={{width: '235px'}}/></li>
+                        <ul key={restaurant.id}>
+                            <li><img src={restaurant.image_url} style={{ width: '235px' }} /></li>
                             <li>{restaurant.name}</li>
                             <li>{restaurant.rating}</li>
                             <Link to={`/IndividualResults/${restaurant.id}`}>More Info</Link>

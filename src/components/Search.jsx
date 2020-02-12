@@ -26,12 +26,10 @@ class Search extends React.Component {
 
     render(){
         return(
-            <div>
-                <form>
-                    <label>Find Restaurant's near me</label>
-                    <button type='submit' onClick={this.handleApiSearch}>Search</button>
+            <div className='search-container'>
+                    <h1 className='search-header'>Find Restaurant's near me</h1>
+                    <button className='search-button' type='submit' onClick={this.handleApiSearch}>Search</button>
                     {/* <Link to='/'  onClick={this.handleApiSearch}>Search</Link> */}
-                </form>
             </div>
         )
     }
