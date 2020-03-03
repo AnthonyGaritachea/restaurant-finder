@@ -7,9 +7,9 @@ import IndividualResults from './IndividualResults.jsx';
 
 const App = () => (
     <Router>
-        <Search/>
         <Switch>
-            <Route path='/' exact={true} component={DisplayResults}/>
+            <Route path='/' exact={true} component={Search}/>
+            <Route path='/results' exact={true} component={DisplayResults}/>
             <Route path='/IndividualResults/:id' exact={true} component={IndividualResults}/>
         </Switch>
     </Router>
