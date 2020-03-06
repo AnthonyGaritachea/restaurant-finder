@@ -11,7 +11,7 @@ body {
     color: white;
     font-family: 'Kalam', cursive;
     font-size: 1.8rem;
-    background:linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/group-lunch.jpeg');
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/group-lunch.jpeg');
     background-attachment: fixed;
     height: 100vh;
     background-size: cover;
@@ -107,3 +107,37 @@ body {
         height: 100%;
     }
 }
+
+/* INDIVIDUAL RESULTS COMPONENT */
+
+.flex-container2 {
+    width: 85%;
+    margin: 5rem auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.img-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.img-flex-container img {
+    width: 300px;
+}
+
+@media screen and (max-width: 800px){
+    .flex-container2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .rest-details-container {
+        margin-top: 2rem;
+    }
+}
+
