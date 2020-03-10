@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 
 import { FaStar } from "react-icons/fa";
 
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from 'react-loader-spinner';
+
 class DisplayResults extends React.Component {
     constructor(props){
         super(props)
@@ -11,20 +14,32 @@ class DisplayResults extends React.Component {
 
     render(){
         const { data } = this.props;
+        
         return(
-            <div className='flex-container'>
-                {data.map((restaurant) => {
-                    return (
-                    <div className='rest-container'>
-                        <ul key={restaurant.id}>
-                            <li className='rest-image'><img src={restaurant.image_url} style={{ width: '100%' }} /></li>
-                            <li className='rest-name'>{restaurant.name}</li>
-                            <li className='rest-rating'>{restaurant.rating} <FaStar/></li>
-                            <Link className='rest-link' to={`/IndividualResults/${restaurant.id}`}>More Info</Link>
-                        </ul>
-                    </div>
-                    )
-                })}
+            <div>
+            { (Object.values(data).length === 0) ?
+                <div className='spinner-loader'>
+                    <Loader 
+                        type="ThreeDots"
+                        color="#00BFFF"
+                        height={100}
+                        width={100} 
+                    />
+                </div>
+            : <div className='flex-container'>
+                    {data.map((restaurant) => {
+                        return (
+                        <div className='rest-container' key={restaurant.id}>
+                            <ul>
+                                <li><img className='rest-image' src={restaurant.image_url}/></li>
+                                <li className='rest-name'>{restaurant.name}</li>
+                                <li className='rest-rating'>{restaurant.rating} <FaStar/></li>
+                                <Link className='rest-link' to={`/IndividualResults/${restaurant.id}`}>More Info</Link>
+                            </ul>
+                        </div>
+                        )
+                    })}
+               </div>}
             </div>
         )
     }

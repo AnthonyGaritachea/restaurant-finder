@@ -24,7 +24,6 @@ class IndividualResults extends React.Component {
             var status = restaurantDetails.hours[0].is_open_now;
         }
 
-        console.log(restaurantDetails);
         return(
             <div>
                 <div className='flex-container2'>
@@ -32,27 +31,31 @@ class IndividualResults extends React.Component {
                         <img src={restaurantDetails.image_url} style={{width: '235px'}}/>
                     </div>
                     <div className='rest-details-container'>
-                        <h1>{restaurantDetails.name}</h1>
+                        <h3>{restaurantDetails.name}</h3>
                         <p><MdPhone/> {restaurantDetails.display_phone}</p>
                         <p>{restaurantDetails.rating} <FaStar/></p>
-                        <p>Categories :
+                        <p>Categories :</p>
                         {restaurantDetails.categories ? restaurantDetails.categories.map(element => {
                             return(
-                                    <p key={element.title}> - {element.title}</p>
+                                    <p key={element.title}><span className='hide'>hide</span>- {element.title}</p>
                             ) 
                         }) : ''}
-                        </p>
                         {restaurantDetails.location ? <p>{<MdLocationOn/>}{restaurantDetails.location.display_address.toString()}</p> : ''}
                         <p>Currently {status === true ? 'Open' : 'Closed'}</p>
                     </div>
                 </div>
+
+                <h3 style={{textAlign: 'center'}}>Customer Photos:</h3>
                 <div className='img-flex-container'>
-                    <p>Customer Photos:</p>
-                    <div>
-                        <img src={restaurantDetails.photos ? restaurantDetails.photos[0] : ''}></img>
-                        <img src={restaurantDetails.photos ? restaurantDetails.photos[1] : ''}></img>
-                        <img src={restaurantDetails.photos ? restaurantDetails.photos[2] : ''}></img>
-                    </div>
+                        <div>
+                            <img src={restaurantDetails.photos ? restaurantDetails.photos[0] : ''}></img>
+                        </div>
+                        <div>
+                            <img src={restaurantDetails.photos ? restaurantDetails.photos[1] : ''}></img>
+                        </div>
+                        <div>
+                            <img src={restaurantDetails.photos ? restaurantDetails.photos[2] : ''}></img>
+                        </div>
                 </div>
             </div>
         )
