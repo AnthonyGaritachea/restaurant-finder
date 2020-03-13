@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { gsap } from 'gsap';
+
 import { MdPhone } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
@@ -16,6 +18,11 @@ class IndividualResults extends React.Component {
         const { dispatch } = this.props;
         dispatch(fetchDataById(this.props.match.params.id));
     };
+
+    componentDidUpdate(){
+        new gsap.from(('.rest-image-container, .img-flex-container, .rest-details-container h3, .rest-details-container p'),
+         1, {duration: 0.5, opacity: 0, y: 100, stagger: 0.3})
+    }
 
     render(){
         const { restaurantDetails } = this.props;
