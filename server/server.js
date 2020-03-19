@@ -1,14 +1,16 @@
 const express = require('express');
 const morgan = require('morgan');
 const axios = require('axios');
+const sslRedirect = require('heroku-ssl-redirect');
 
 require('dotenv').config();
 
 const app = express();
 
+app.use(sslRedirect(['development', 'production']));
+app.use(morgan('dev'))
 app.use(express.static('dist'))
 app.use(express.static('public'));
-app.use(morgan('dev'))
 
 app.get('/data/:lat/:lon', (req, res) => {
     axios({

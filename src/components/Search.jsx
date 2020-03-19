@@ -13,6 +13,7 @@ class Search extends React.Component {
     }
 
     componentDidMount(){
+        alert('please allow this site to obtain your location WHEN promted to search for nearby restaurants')
                      // selector, duration, config
         new gsap.from('.search-header', 2, {opacity: 0, delay: 0});
         new gsap.from('.search-button', 2, {opacity: 0, delay: 1});
@@ -29,13 +30,23 @@ class Search extends React.Component {
     handleApiSearch(event){
         const { dispatch } = this.props;
 
-        if(navigator.geolocation){
+          if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position){
-              const lat = position.coords.latitude;
-              const lon = position.coords.longitude;
-              dispatch(fetchData(lat, lon));
-            })
-          };
+                      const lat = position.coords.latitude;
+                      const lon = position.coords.longitude;
+                      dispatch(fetchData(lat, lon))
+                    }, function(error){
+                        // handles timeout error
+                        console.log('error handler was invoked')
+                        navigator.geolocation.getCurrentPosition(function(position){
+                            const lat = position.coords.latitude;
+                            const lon = position.coords.longitude;
+                            dispatch(fetchData(lat, lon));
+                        })
+                    },
+                    {timeout: 15000, enableHighAccuracy: true, maximumAge: 75000}
+            );
+        }  
     };
 
     render(){

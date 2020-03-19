@@ -1,12 +1,11 @@
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './rootReducer.js';
 import ReduxPromise from "redux-promise";
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
 const rootStore = createStore(
     rootReducer,
-    composeEnhancers(applyMiddleware(ReduxPromise))
+    composeWithDevTools(applyMiddleware(ReduxPromise))
 );
 
 export default rootStore;
